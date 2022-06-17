@@ -1,0 +1,52 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+dataset = pd.read_csv('Salary_Data.csv')
+dataset.head()
+YearsExperience	Salary
+0	1.1	39343.0
+1	1.3	46205.0
+2	1.5	37731.0
+3	2.0	43525.0
+4	2.2	39891.0
+X = dataset.iloc[:, :-1].values
+print(X)
+<class 'numpy.ndarray'>
+y = dataset.iloc[:, -1].values
+dataset.head()
+YearsExperience	Salary
+0	1.1	39343.0
+1	1.3	46205.0
+2	1.5	37731.0
+3	2.0	43525.0
+4	2.2	39891.0
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, random_state = 0)
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)
+y_pred = regressor.prplt.scatter(X_train, y_train, color = 'red')
+plt.plot(X_train, regressor.predict(X_train), color = 'blue')
+plt.title('Salary vs Experience (Training set)')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.show()edict(X_test)
+pd.DataFrame(data={'Actuals': y_test, 'Predictions': y_pred})
+Actuals	Predictions
+0	37731.0	40835.105909
+1	122391.0	123079.399408
+2	57081.0	65134.556261
+3	63218.0	63265.367772
+4	116969.0	115602.645454
+5	109431.0	108125.891499
+6	112635.0	116537.239698
+7	55794.0	64199.962017
+8	83088.0	76349.687193
+9	101302.0	100649.137545
+plt.scatter(X_train, y_train, color = 'red')
+plt.plot(X_train, regressor.predict(X_train), color = 'blue')
+plt.title('Salary vs Experience (Training set)')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.show()
